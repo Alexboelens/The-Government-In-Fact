@@ -1,0 +1,65 @@
+body {
+    margin: 0;
+}
+
+.logo {
+    height: 100px;
+}
+
+.email-link {
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+
+#content {
+    display: none;
+}
+
+.mail-icon {
+    height: 30px;
+    margin-right: 5px;
+}
+
+.content-logo {
+    width: 100%;
+    margin-top: 60px;
+}
+
+.margin-top {
+    margin-top: 30px;
+}
+
+#read-more-btn,
+#read-less-btn {
+    margin-bottom: 50px;
+}
+
+footer {
+    margin-right: 20px;
+    min-height: 50px;
+}
+
+.mail-icon {
+    height: 25px;
+}
+
+#state-select {
+    width: 50%;
+    margin-left: 10px;
+}
+
+#no-results {
+    width: 100%;
+    text-align: center;
+    min-height: 160px;
+}
+
+#loading-wrap {
+    display: none;
+}
+
+#loader-image {
+    width: 80px;
+    margin-right: 100px;
+}
