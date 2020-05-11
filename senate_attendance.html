@@ -46,7 +46,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="congress113">
                             <a class="dropdown-item" href="senate_data.html">Senate</a>
-                            <a class="dropdown-item" href="house_data.html">House</a>
+                            <a class="dropdown-item" href="#">House</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -55,8 +55,8 @@
                             Attendance
                         </a>
                         <div class="dropdown-menu" aria-labelledby="attendance">
-                            <a class="dropdown-item" href="senate_attendance_statistics.html">Senate</a>
-                            <a class="dropdown-item" href="#">House</a>
+                            <a class="dropdown-item" href="#">Senate</a>
+                            <a class="dropdown-item" href="house_attendance.html">House</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -76,9 +76,84 @@
 
         <!-- main content -->
         <main class="container">
+            <div class="row d-flex justify-content-around">
+                <div class="col">
+                    <h2 class="margin-top">Attendance</h2>
+                    <p>The Constitution specifies that a majority of members constitutes a quorum to do business in each
+                        house. Representatives and senators rarely force the presence of a quorum by demanding quorum
+                        calls; thus, in most cases, debates continue even if a majority is not present.
+                        The Senate uses roll-call votes; a clerk calls out the names of all the senators, each senator
+                        stating "aye" or "no" when his or her name is announced. The House reserves roll-call votes for
+                        the most formal matters, as a roll-call of all 435 representatives takes quite some time;
+                        normally, members vote by electronic device. In the case of a tie, the motion in question fails.
+                        In the Senate, the Vice President may (if present) cast the tiebreaking vote.</p>
+                </div>
+                <div class="col">
+                    <h2 class="margin-top">Senate at a glance</h2>
+                    <table class="table margin-top">
+                        <thead>
+                            <tr>
+                                <th>Party</th>
+                                <th>Representatives</th>
+                                <th>% Voted with Party</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-center">
+                            <tr>
+                                <td class="text-left">Republicans</td>
+                                <td id="nr-rep"></td>
+                                <td id="pct-rep"></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Democrats</td>
+                                <td id="nr-dem"></td>
+                                <td id="pct-dem"></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Independant</td>
+                                <td id="nr-ind"></td>
+                                <td id="pct-ind"></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Total</td>
+                                <td id="total"></td>
+                                <td id="total-pct"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row margin-top">
+                    <div class="col">
+                        <h3>Least Engaged (Bottom 10% Attendance)</h3>
+                        <table class="table table-responsive text-center">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Nr.Missed Votes</th>
+                                    <th>% Missed</th>
+                                </tr>
+                            </thead>
+                            <tbody id="table-1"></tbody>
+                        </table>
+                    </div>
+                    <div class="col">
+                        <h3>Most Engaged (Top 10% Attendance)</h3>
+                        <table class="table table-responsive text-center">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Nr.Missed Votes</th>
+                                    <th>% Missed</th>
+                                </tr>
+                            </thead>
+                            <tbody id="table-2"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
 
 
-            house
+
 
 
 
