@@ -2,7 +2,6 @@ const readMoreButton = document.getElementById('read-more-btn');
 const readLessButton = document.getElementById('read-less-btn');
 const content = document.getElementById('content');
 const table = document.getElementById('table-body');
-const table2 = document.getElementById('table-2');
 const select = document.getElementById('state-select');
 const republicanCheckbox = document.getElementById('republican');
 const independantCheckbox = document.getElementById('independant');
@@ -11,7 +10,6 @@ const noResults = document.getElementById('no-results');
 const senateApi = 'https://api.propublica.org/congress/v1/113/senate/members.json';
 const houseApi = 'https://api.propublica.org/congress/v1/113/house/members.json';
 const url = window.location.pathname;
-let api;
 
 // Fetch Data
 const getData = async () => {
@@ -38,29 +36,48 @@ const getData = async () => {
     select.onchange = () => createMainTable(filterMembers(members));
   } else if (url === '/senate_attendance.html' || url === '/house_attendance.html') {
     partyStatisticsTable(members);
-    createAttendanceTables(test(members), 'table-1', true, 'missed_votes', 'missed_votes_pct');
-    createAttendanceTables(test(members), 'table-2', false, 'missed_votes', 'missed_votes_pct');
+    createTables(tenPct(sortArray(members, 'bottom', 'missed_votes_pct')), 'table-1', 'missed_votes', 'missed_votes_pct');
+    createTables(tenPct(sortArray(members, 'top', 'missed_votes_pct')), 'table-2', 'missed_votes', 'missed_votes_pct');
   }
 };
 getData();
 
-const test = (members) => {
-  return members;
+// get 10% of the array and the values that are the same as the end of the array
+const tenPct = arr => {
+  const tenPctArray = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (i < arr.length * 0.1) {
+      tenPctArray.push(arr[i]);
+    } else if (tenPctArray[tenPctArray.length - 1] === arr[i]) {
+      tenPctArray.push(arr[i]);
+    } else {
+      break;
+    }
+  }
+  return tenPctArray;
 }
-const createAttendanceTables = (arr, table, boolean, stats1, stats2) => {
-  const tableToCreate = document.getElementById(table);
-  if (boolean) {
-    sortedArray = [...arr].sort((a, b) => {
-      return b[stats2] - a[stats2];
+
+// sort array asc or desc
+const sortArray = (arr, topOrBot, stats) => {
+  if (topOrBot === 'bottom') {
+    sortedArray = arr.sort((a, b) => {
+      return b[stats] - a[stats];
     })
   } else {
-    sortedArray = [...arr].sort((a, b) => {
-      return a[stats2] - b[stats2];
+    sortedArray = arr.sort((a, b) => {
+      return a[stats] - b[stats];
     })
   }
-  sortedArray.forEach(member => {
+  return sortedArray;
+}
+
+// create attendance and loyalty tables
+const createTables = (arr, table, stats1, stats2) => {
+  const tableToCreate = document.getElementById(table);
+  arr.forEach(member => {
+    member.middle_name ? middleName = member.middle_name : middleName = '';
     const row = tableToCreate.insertRow();
-    row.insertCell().innerHTML = member.first_name;
+    row.insertCell().innerHTML = `${member.last_name}, ${member.first_name} ${middleName}`
     row.insertCell().innerHTML = member[stats1];
     row.insertCell().innerHTML = member[stats2].toFixed(2);
   })
@@ -74,7 +91,9 @@ const partyStatisticsTable = array => {
   const repVotes = [];
   const demVotes = [];
   const indVotes = [];
+  const totalPct = [];
   array.map(item => {
+    totalPct.push(item.votes_with_party_pct);
     if (item.party === 'R') {
       nrRep++;
       repVotes.push(item.votes_with_party_pct);
@@ -94,14 +113,17 @@ const partyStatisticsTable = array => {
   document.getElementById('pct-rep').innerHTML = getAverage(repVotes);
   document.getElementById('pct-dem').innerHTML = getAverage(demVotes);
   document.getElementById('pct-ind').innerHTML = getAverage(indVotes);
+  document.getElementById('total').innerHTML = nrRep + nrDem + nrInd;
+  document.getElementById('total-pct').innerHTML = getAverage(totalPct);
+
 }
 
-// get the average of an array and round down to 2 decimals helper function
+// get the average of an array and round down to 2 decimals
 const getAverage = arr => {
   if (arr.length === 0) {
     return 0;
   } else {
-    const total = arr.reduce((a, b) => a + b, 0) / arr.length;
+    const total = arr.reduce((a, b) => a + b) / arr.length;
     return total.toFixed(2);
   }
 }

@@ -63,3 +63,9 @@ footer {
     width: 80px;
     margin-right: 100px;
 }
+
+#table-1 td,
+#table-2 td {
+    width: 180px;
+    /* font-size: 15px; */
+}
