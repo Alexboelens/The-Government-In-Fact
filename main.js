@@ -1,7 +1,6 @@
 const readMoreButton = document.getElementById('read-more-btn');
 const readLessButton = document.getElementById('read-less-btn');
 const content = document.getElementById('content');
-const table = document.getElementById('table-body');
 const select = document.getElementById('state-select');
 const republicanCheckbox = document.getElementById('republican');
 const independantCheckbox = document.getElementById('independant');
@@ -14,7 +13,6 @@ const url = window.location.pathname;
 // Fetch Data
 const getData = async () => {
   url.includes('senate') ? api = senateApi : api = houseApi;
-
   const members = await fetch(api, {
     method: 'GET',
     headers: {
@@ -27,17 +25,21 @@ const getData = async () => {
 
   // function calling for different pages
   url !== '/index.html' ? hideLoader() : null;
-  if (url === '/senate_data.html' || url === '/house_data.html') {
+  if (url.includes('data')) {
     createSelectOptions(members);
     createMainTable(members);
-    democratCheckbox.onchange = () => createMainTable(filterMembers(members));
     republicanCheckbox.onchange = () => createMainTable(filterMembers(members));
-    independantCheckbox.onchange = () => createMainTable(filterMembers(members));
+    democratCheckbox.onchange = () => createMainTable(filterMembers(members));
+    democratCheckbox.onchange = () => createMainTable(filterMembers(members));
     select.onchange = () => createMainTable(filterMembers(members));
-  } else if (url === '/senate_attendance.html' || url === '/house_attendance.html') {
+  } else if (url.includes('attendance')) {
     partyStatisticsTable(members);
     createTables(tenPct(sortArray(members, 'bottom', 'missed_votes_pct')), 'table-1', 'missed_votes', 'missed_votes_pct');
     createTables(tenPct(sortArray(members, 'top', 'missed_votes_pct')), 'table-2', 'missed_votes', 'missed_votes_pct');
+  } else if (url.includes('loyalty')) {
+    partyStatisticsTable(members);
+    createTables(tenPct(sortArray(members, 'top', 'votes_with_party_pct')), 'table-1', 'total_votes', 'votes_with_party_pct');
+    createTables(tenPct(sortArray(members, 'bottom', 'votes_with_party_pct')), 'table-2', 'total_votes', 'votes_with_party_pct');
   }
 };
 getData();
@@ -115,7 +117,6 @@ const partyStatisticsTable = array => {
   document.getElementById('pct-ind').innerHTML = getAverage(indVotes);
   document.getElementById('total').innerHTML = nrRep + nrDem + nrInd;
   document.getElementById('total-pct').innerHTML = getAverage(totalPct);
-
 }
 
 // get the average of an array and round down to 2 decimals
@@ -130,6 +131,7 @@ const getAverage = arr => {
 
 // Create main table
 const createMainTable = members => {
+  const table = document.getElementById('table-body');
   table.innerHTML = " ";
   members.forEach(member => {
     let middleName;

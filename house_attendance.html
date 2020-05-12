@@ -12,69 +12,73 @@
 </head>
 
 <body>
-    <div id="loading-wrap">
-        <div class="container">
-            <div class="row justify-content-between">
-                <div class="col-6 col-md-3">
-                    <img class="logo" src="images/tgif-logo.png" alt="Logo">
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="email-link d-flex align-items-center justify-content-center">
-                        <span class="material-icons mail-icon">mail_outline</span>
-                        <span><a href="mailto:info@tgif.net?subject=Information">info@tgif.net</a></span>
-                    </div>
+    <div class="container">
+        <div class="row justify-content-between">
+            <div class="col-6 col-md-3">
+                <img class="logo" src="images/tgif-logo.png" alt="Logo">
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="email-link d-flex align-items-center justify-content-center">
+                    <span class="material-icons mail-icon">mail_outline</span>
+                    <span><a href="mailto:info@tgif.net?subject=Information">info@tgif.net</a></span>
                 </div>
             </div>
         </div>
-        <!-- navbar -->
-        <nav class="container navbar navbar-expand-lg navbar-dark bg-dark justify-content-end">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-links"
-                aria-controls="navbar-links" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+    </div>
+    <!-- navbar -->
+    <nav class="container navbar navbar-expand-lg navbar-dark bg-dark justify-content-end">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-links"
+            aria-controls="navbar-links" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-            <div class="collapse navbar-collapse" id="navbar-links">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="congress113" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
-                            Congress 113
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="congress113">
-                            <a class="dropdown-item" href="senate_data.html">Senate</a>
-                            <a class="dropdown-item" href="house_data.html">House</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle active" href="#" id="attendance" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
-                            Attendance
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="attendance">
-                            <a class="dropdown-item" href="senate_attendance.html">Senate</a>
-                            <a class="dropdown-item" href="#">House</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="party-loyalty" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
-                            Party Loyalty
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="party-loyalty">
-                            <a class="dropdown-item" href="senate_loyalty.html">Senate</a>
-                            <a class="dropdown-item" href="house_loyalty.html">House</a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
+        <div class="collapse navbar-collapse" id="navbar-links">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="congress113" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Congress 113
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="congress113">
+                        <a class="dropdown-item" href="senate_data.html">Senate</a>
+                        <a class="dropdown-item" href="house_data.html">House</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle active" href="#" id="attendance" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Attendance
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="attendance">
+                        <a class="dropdown-item" href="senate_attendance.html">Senate</a>
+                        <a class="dropdown-item" href="#">House</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="party-loyalty" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Party Loyalty
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="party-loyalty">
+                        <a class="dropdown-item" href="senate_loyalty.html">Senate</a>
+                        <a class="dropdown-item" href="house_loyalty.html">House</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
 
-        </nav>
+    </nav>
 
-        <!-- main content -->
-        <main class="container">
+    <!-- main content -->
+    <main class="container">
+        <!-- loader -->
+        <div id="loader" class="container d-flex justify-content-center my-4">
+            <img id="loader-image" src="images/loader.gif" alt="Loader">
+        </div>
+        <div id="loading-wrap">
             <div class="row d-flex justify-content-around">
                 <div class="col">
                     <h2 class="margin-top">Attendance</h2>
@@ -128,7 +132,7 @@
                             <thead>
                                 <tr>
                                     <th>Name</th>
-                                    <th>Nr.Missed Votes</th>
+                                    <th>Nr. Missed Votes</th>
                                     <th>% Missed</th>
                                 </tr>
                             </thead>
@@ -141,7 +145,7 @@
                             <thead>
                                 <tr>
                                     <th>Name</th>
-                                    <th>Nr.Missed Votes</th>
+                                    <th>Nr. Missed Votes</th>
                                     <th>% Missed</th>
                                 </tr>
                             </thead>
@@ -153,13 +157,9 @@
             <footer class="container card bg-light d-flex align-items-center justify-content-center margin-top">
                 <span class="text-muted">&copy; 2016 TGIF | All Rights Reserved</span>
             </footer>
-        </main>
+    </main>
     </div>
-    <!-- loader -->
-    <div id="loader" class="container d-flex justify-content-center my-4">
-        <img id="loader-image" src="images/loader.gif" alt="Loader">
-    </div>
-    </div>
+
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
