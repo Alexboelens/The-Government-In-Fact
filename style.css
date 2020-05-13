@@ -64,14 +64,7 @@ footer {
     margin-right: 100px;
 }
 
-#table-1 tr:first-child,
-#table-2 tr:first-child {
-    width: 260px;
-    /* font-size: 15px; */
-}
-
 #table-1 td,
 #table-2 td {
     width: 300px;
-    /* font-size: 15px; */
 }

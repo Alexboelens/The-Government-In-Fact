@@ -24,7 +24,9 @@ const getData = async () => {
     .catch(err => console.log(err));
 
   // function calling for different pages
-  url !== '/index.html' ? hideLoader() : null;
+  if (!url.includes('index')) {
+    hideLoader();
+  }
   if (url.includes('data')) {
     createSelectOptions(members);
     createMainTable(members);
