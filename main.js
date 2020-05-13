@@ -179,14 +179,16 @@ const filterMembers = members => {
   })
   if (filteredMembers.length == 0) {
     noResults.style.display = 'block';
+    noResults.innerHTML = 'No results were found';
   } else {
     noResults.style.display = 'none';
+    noResults.innerHTML = '';
     return filteredMembers;
   }
 };
 
 // Function for read-more / read-less button for the Homepage.
-if (url.includes('index')) {
+if (url.includes('index') || url === 'https://alexboelens.github.io/The-Government-In-Fact/') {
   readMoreButton.onclick = () => {
     content.style.display = 'block';
     readMoreButton.style.display = 'none';
