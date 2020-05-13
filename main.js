@@ -24,7 +24,7 @@ const getData = async () => {
     .catch(err => console.log(err));
 
   // function calling for different pages
-  if (!url.includes('index') || url.length != 24) {
+  if (!url.includes('index')) {
     hideLoader();
   }
   if (url.includes('data')) {
