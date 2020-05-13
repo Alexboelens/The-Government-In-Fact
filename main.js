@@ -178,24 +178,24 @@ const filterMembers = members => {
     }
   })
   if (filteredMembers.length == 0) {
-    noResults.innerHTML = 'No results were found';
+    noResults.style.display = 'block';
   } else {
-    noResults.innerHTML = '';
+    noResults.style.display = 'none';
     return filteredMembers;
   }
 };
 
 // Function for read-more / read-less button for the Homepage.
-// if (url.includes('index')) {
-readMoreButton.onclick = () => {
-  content.style.display = 'block';
-  readMoreButton.style.display = 'none';
-};
-readLessButton.onclick = () => {
-  content.style.display = 'none';
-  readMoreButton.style.display = 'block';
-};
-// }
+if (url.includes('index')) {
+  readMoreButton.onclick = () => {
+    content.style.display = 'block';
+    readMoreButton.style.display = 'none';
+  };
+  readLessButton.onclick = () => {
+    content.style.display = 'none';
+    readMoreButton.style.display = 'block';
+  };
+}
 
 // hide loader
 const hideLoader = () => {
