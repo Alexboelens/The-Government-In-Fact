@@ -186,16 +186,16 @@ const filterMembers = members => {
 };
 
 // Function for read-more / read-less button for the Homepage.
-if (url.includes('index')) {
-  readMoreButton.onclick = () => {
-    content.style.display = 'block';
-    readMoreButton.style.display = 'none';
-  };
-  readLessButton.onclick = () => {
-    content.style.display = 'none';
-    readMoreButton.style.display = 'block';
-  };
-}
+// if (url.includes('index')) {
+readMoreButton.onclick = () => {
+  content.style.display = 'block';
+  readMoreButton.style.display = 'none';
+};
+readLessButton.onclick = () => {
+  content.style.display = 'none';
+  readMoreButton.style.display = 'block';
+};
+// }
 
 // hide loader
 const hideLoader = () => {
