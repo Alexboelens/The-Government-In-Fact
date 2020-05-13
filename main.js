@@ -186,7 +186,7 @@ const filterMembers = members => {
 };
 
 // Function for read-more / read-less button for the Homepage.
-if (url == '/index.html') {
+if (url.includes('index')) {
   readMoreButton.onclick = () => {
     content.style.display = 'block';
     readMoreButton.style.display = 'none';
